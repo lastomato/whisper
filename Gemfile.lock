@@ -86,6 +86,9 @@ GEM
       activemodel (~> 3.1)
       mongo (~> 1.3)
       tzinfo (~> 0.3.22)
+    mongoid_auto_inc (0.1.0)
+      activesupport (>= 3.0.0)
+      mongoid (>= 2.0.0.rc.6)
     multi_json (1.1.0)
     nokogiri (1.5.2)
     polyglot (0.3.3)
@@ -167,6 +170,7 @@ DEPENDENCIES
   database_cleaner
   jquery-rails
   mongoid
+  mongoid_auto_inc
   rails (= 3.2.2)
   rspec-rails
   sass-rails (~> 3.2.3)

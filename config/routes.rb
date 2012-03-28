@@ -1,8 +1,12 @@
 Whisper::Application.routes.draw do
   root :to => "home#index"
 
-  match "/:author/invite" => "users#invite"
-  match "/author/new" => "users#new"
-  match "/author/create" => "users#create"
-  match "/author/destroy" => "users#destroy"
+  match "/entry/:permalink" => "entries#show"
+  match "/entry/search/:keyword" => "entries#search"
+
+  match "/login" => "sessions#new"
+  match "/logout" => "sessions#destroy"
+  match "/blog" => "entries#index"
+
+  resource :entry, :except => [:show]
 end

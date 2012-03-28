@@ -6,6 +6,7 @@ gem 'mongoid'
 gem 'bson_ext'
 
 gem 'mongoid_auto_inc'
+gem 'mongoid_search'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -25,4 +26,9 @@ end
 gem 'jquery-rails'
 
 gem 'bcrypt-ruby'
+
+gem 'coderay'
+gem 'bluecloth'
+
+gem 'kaminari'
 

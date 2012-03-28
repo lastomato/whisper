@@ -8,7 +8,25 @@
 </head>
 <body>
 
-<%= yield %>
+<% if logged_in? %>
+  <div class="nav">
+    <ul>
+      <li><%= link_to "Index", root_path %></li>
+      <li><%= link_to "Post", new_entry_path %></li>
+      <li><%= link_to "Logout", logout_path %></li>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+<% unless @index %>
+    <div class="footer">
+      <p>&copy; Tomato 2012</p>
+    </div>
+<% end %>
 
 </body>
 </html>

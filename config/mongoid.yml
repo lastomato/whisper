@@ -8,11 +8,7 @@ test:
 
 # set these environment variables on your prod server
 production:
-  host: <%= ENV['MONGOID_HOST'] %>
-  port: <%= ENV['MONGOID_PORT'] %>
-  username: <%= ENV['MONGOID_USERNAME'] %>
-  password: <%= ENV['MONGOID_PASSWORD'] %>
-  database: <%= ENV['MONGOID_DATABASE'] %>
+  uri: mongodb://heroku_app3519145:37o7a5e7l3bli6jpgl1bq4qtht@ds031627.mongolab.com:31627/heroku_app3519145
   # slaves:
   #   - host: slave1.local
   #     port: 27018

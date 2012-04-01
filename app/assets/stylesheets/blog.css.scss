@@ -125,7 +125,7 @@ $length: 60%;
 
 #footer {
   width: $length;
-  @include margin-align;
+  margin: 0 auto 0 auto;;
   margin-top: 20px;
   text-align: center;
 

@@ -2,10 +2,10 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  attr_accessible :username, :email
+  attr_accessible :username, :password, :password_confirmation
   attr_accessor :password
 
-  auto_increment :number
+  auto_increment :number, :seed => 0
 
   field :username
 
@@ -17,7 +17,7 @@ class User
   validates :username, :length => { :in => 5..15 }
 
   validates :password, :confirmation => true
-  validates :passowrd, :length => { :in => 8..20 }
+  validates :password, :length => { :in => 8..20 }
 
   before_save :encrypt_password
 
@@ -37,5 +37,9 @@ class User
       self.password_salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def self.find_by_number(number)
+    where(:number => number).first
   end
 end

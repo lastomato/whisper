@@ -30,7 +30,7 @@ Whisper::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  # See everything in the log (default is :info)
+  # See everything in the log (assets is :info)
   # config.log_level = :debug
 
   # Prepend all log lines with the following tags
@@ -45,7 +45,7 @@ Whisper::Application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 
-  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+  # Precompile additional assets (application.js, application.css.scss, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored

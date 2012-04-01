@@ -1,0 +1,49 @@
+@import url(http://fonts.googleapis.com/css?family=Allura);
+
+/*font-family: 'Allura', cursive;*/
+
+$most-wide: 90%;
+$mediate-wide: 60%;
+$least-wide: 30%;
+
+@mixin margin-align {
+  margin: 0 auto 0 auto;
+}
+
+@mixin margin-vertical {
+  margin-top: 15%;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.container {
+  @include margin-vertical;
+}
+
+#index {
+  width: $mediate-wide;
+  @include margin-align;
+  @include text-center;
+
+  p {
+    font-family: 'Allura', cursive;
+    font-size: 100px;
+
+    span{
+      font-size: 32px;
+    }
+
+  }
+
+  div {
+    display: inline-block;
+    margin: 50px 20px 0 20px;
+    cursor: pointer;
+  }
+}

@@ -25,10 +25,13 @@ end
 
 gem 'jquery-rails'
 
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
 gem 'coderay'
-gem 'bluecloth'
+gem 'redcarpet'
 
-gem 'kaminari'
+gem 'watu_table_builder', :require => 'table_builder'
+
+gem 'client_side_validations', '~> 3.2.0.beta.1'
+gem 'client_side_validations-mongoid'
 

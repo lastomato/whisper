@@ -1,0 +1,192 @@
+@import url(http://fonts.googleapis.com/css?family=Bad+Script);
+@import url(http://fonts.googleapis.com/css?family=Allura);
+@import url(http://fonts.googleapis.com/css?family=Maven+Pro);
+@import url(http://fonts.googleapis.com/css?family=Architects+Daughter);
+
+@import "markdown";
+@import "coderay";
+
+@mixin round-corner {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+@mixin float-div {
+  height: 20%;
+  width: 10%;
+  display: inline-block;
+  float: right;
+}
+
+@mixin margin-align($up: 0, $right: auto, $down: 0, $left: auto) {
+  margin: $up $right $down $left;
+}
+
+@mixin popup {
+  text-align: left;
+  display: none;
+  position: fixed;
+  width: 280px;
+  height: 50px;
+  padding: 15px;
+  background: #D5E2D9;
+  border: 1px solid #cecece;
+  font-size: 14px;
+}
+
+$length: 60%;
+$side-length: 20%;
+
+.entry {
+  @include margin-align;
+  /*height: auto; *//*for placing footer bottom*/
+  /*min-height: 100%; *//*for placing footer bottom*/
+  width: $length;
+  /*min-height: 1500px;*/ //for test
+
+  .left, .right {
+    width: $side-length;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .content {
+    width: $length;
+    display: inline-block;
+    /*padding-bottom: 100px; *//*for placing footer bottom*/
+
+    .title {
+      min-height: 50px;
+      margin-top: 50px;
+      text-align: center;
+      font-family: 'Bad Script', cursive;
+      font-size: 48px;
+
+      h2 {
+        display: inline-block;
+      }
+
+      div {
+        @include float-div;
+      }
+    }
+
+    .body {
+      margin-top: 50px;
+      min-height: 200px;
+      /*font-family: 'Bad Script', cursive;*/
+      font-family: 'Architects Daughter', cursive;
+      font-size: 18px;
+
+      @include markdown;
+      @include coderay;
+    }
+  }
+
+  #prev, #next {
+    position: fixed;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: -50px; /*set to a negative number 1/2 of your height*/
+  }
+
+  #help, #info, #search {
+    position: fixed;
+    top: 5%;
+    width: 50px;
+    height: 50px;
+    margin-top: -25px; /*set to a negative number 1/2 of your height*/
+    margin-right: -25px; /*set to a negative number 1/2 of your width*/
+    cursor: pointer;
+  }
+
+  #help {
+    right: 30%;
+
+    #help-popup {
+      @include popup;
+    }
+  }
+
+  #info {
+    right: 26%;
+
+    #info-popup{
+      @include popup;
+    }
+  }
+
+  #search {
+    right: 22%;
+  }
+
+  #search-popup {
+    @include popup;
+    height: 35px;
+    width: 250px;
+
+    input[type=text] {
+      height: 25px;
+      line-height: 20px;
+    }
+
+    input[type=submit] {
+      height: 25px;
+      width: 40px;
+    }
+  }
+
+  #gotop, #goback {
+    @include float-div;
+    margin-top: 60%;
+
+    position: fixed;
+    bottom: 5%;
+    width: 50px;
+    height: 50px;
+    margin-bottom: -25px; /*set to a negative number 1/2 of your height*/
+    margin-right: -25px; /*set to a negative number 1/2 of your width*/
+    cursor: pointer;
+  }
+
+  #gotop {
+    right: 28%;
+  }
+
+  #goback {
+    right: 24%;
+  }
+
+  #prev {
+    margin-left: -50px; /*set to a negative number 1/2 of your width*/
+    left: 25%;
+  }
+
+  #next {
+    margin-right: -50px; /*set to a negative number 1/2 of your width*/
+    right: 25%;
+  }
+}
+
+#disqus_thread {
+  width: 36%;
+  margin: 0 auto;
+  font-family: 'Maven Pro', sans-serif;
+}
+
+#footer {
+  width: 36%;
+  text-align: center;
+  //
+  //clear: both; /*next lines of code for placing footer bottom*/
+  //position: relative;
+  //z-index: 10;
+  //height: 100px;
+  //margin-top: -100px;
+
+  span {
+    font-family: 'Allura', cursive;
+  }
+}

@@ -1,8 +1,11 @@
 class EntriesController < ApplicationController
-  before_filter :logged_in?, :except => [:show, :search, :index]
+  before_filter :require_login, :except => [:show, :search, :index]
 
   def index
-    @entries = Entry.all.page(params[:page])
+    @entries = Entry.all
+    @date = (params[:year] || params[:month]) ? Date.parse(params[:year] || params[:month]) : Date.today
+
+    @blog = 1
   end
 
   def new
@@ -11,27 +14,31 @@ class EntriesController < ApplicationController
 
   def show
     @entry = Entry.find_by_permalink(params[:permalink])
+
+    @prev = Entry.only(:permalink, :created_at).where(:created_at.lt => @entry.created_at).asc(:created_at).last
+    @next = Entry.only(:permalink, :created_at).where(:created_at.gt => @entry.created_at).asc(:created_at).first
   end
 
   def edit
-    @entry = Entry.find(params[:id])
+    @entry = Entry.find_by_permalink(params[:permalink])
   end
 
   def create
-    @entry = Entry.update_attributes(params[:entry])
+    @entry = current_user.entries.create(params[:entry])
 
     if @entry.save
-      redirect_to show_path(@entry.permalink), :notice => "Successfully created!"
+      redirect_to entry_show_path(@entry.permalink), :notice => "Successfully created!"
     else
       flash[:alert] = "Fail"
     end
   end
 
   def update
-    @entry = Entry.create(params[:entry])
+    @entry = Entry.find_by_permalink(params[:permalink])
+    @entry.update_attributes(params[:entry])
 
     if @entry.save
-      redirect_to show_path(@entry.permalink), :notice => "Successfully created!"
+      redirect_to entry_show_path(@entry.permalink), :notice => "Successfully created!"
     else
       flash[:alert] = "Fail"
     end
@@ -53,5 +60,13 @@ class EntriesController < ApplicationController
 
   def search
     @entries = Entry.search(params[:keyword])
+  end
+
+  def feed
+    @entries = Entry.all
+
+    respond_to do |format|
+      format.atom
+    end
   end
 end

@@ -1,6 +1,7 @@
 class Entry
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Search
 
   field :title
   field :body
@@ -17,7 +18,7 @@ class Entry
 
   validates :permalink, :uniqueness => true
 
-  #search_in :title, :body
+  search_in :title, :body
 
   belongs_to :user
 
@@ -27,7 +28,9 @@ class Entry
     self.permalink = self.title.gsub('/([[:punct:]]|\s)/', '-')
   end
 
-  def find_by_permalink(permalink)
-    where(:permalink => permalink).try(:first)
+  class << self
+    def find_by_permalink(permalink)
+      where(:permalink => permalink).try(:first)
+    end
   end
 end

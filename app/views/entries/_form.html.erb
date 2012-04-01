@@ -1,0 +1,5 @@
+<%= form_for @entry, :url => url, :method => method,:validate => true do |f| %>
+  <p><%= f.text_field :title, :placeholder => "Titile" %></p>
+  <p><%= f.text_area :body, :placeholder => "Content"%></p>
+  <%= f.submit :submit %>
+<% end %>

@@ -1,0 +1,17 @@
+@import url(http://fonts.googleapis.com/css?family=Allura);
+
+$length: 36%;
+
+#results {
+  width: $length;
+  margin: 5% auto 0 auto;
+}
+
+#footer {
+  width: $length;
+  text-align: center;
+
+  span {
+    font-family: 'Allura', cursive;
+  }
+}

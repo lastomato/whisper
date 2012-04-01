@@ -1,0 +1,135 @@
+@import url(http://fonts.googleapis.com/css?family=Average);
+@import url(http://fonts.googleapis.com/css?family=Allura);
+@import url(http://fonts.googleapis.com/css?family=Maven+Pro);
+
+@mixin margin-align {
+  margin: 0 auto 0 auto;
+}
+
+@mixin height($h) {
+  height: $h;
+}
+
+$length: 60%;
+
+#nav {
+  @include height(50px);
+
+  width: 100%;
+  position: fixed;
+  top:0;
+  background-color: #8A909C;
+
+  #inner {
+    width: $length;
+    @include margin-align;
+    font-family: 'Maven Pro', sans-serif;
+
+    ul {
+     margin-top: 16px;
+     float: right;
+     list-style: none;
+     font-size: 18px;
+    }
+
+    li {
+      text-align: center;
+      display: inline;
+    }
+  }
+}
+
+#calendar {
+
+  #date {
+    font-family: 'Average', serif;
+    font-size: 36px;
+    width: $length;
+    @include margin-align;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    #middle {
+      @include margin-align;
+      text-align: center;
+
+      div {
+        display: inline-block;
+      }
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    width: $length;
+    @include margin-align;
+  }
+  
+  th, td {
+    font-family: 'Average', serif;
+    font-size: 24px;
+    padding: 6px;
+    border: 1px solid #cecece;
+  }
+
+  th {
+    background: #DDD;
+    color: #666;
+    text-align: center;
+    width: 14.2857142857143%;
+  }
+  
+  td {
+    background: #FFF;
+    color: #777;
+    height: 80px;
+    vertical-align: top;
+    font-size: 16px;
+  }
+
+  .notmonth {
+    color: #CCC;
+  }
+
+  #month {
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+
+    a, #calendar #month a:hover {
+      text-decoration: none;
+      padding: 0 10px;
+      color: #999;
+    }
+  }
+
+  .today {
+    background-color: #D7F2FF;
+  }
+
+  ul {
+   margin: 0;
+   margin-top: 5px;
+   padding: 0;
+   list-style: none;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+#footer {
+  width: $length;
+  @include margin-align;
+  margin-top: 20px;
+  text-align: center;
+
+  span {
+    font-family: 'Allura', cursive;
+  }
+}

@@ -1,0 +1,26 @@
+<%=stylesheet_link_tag "blog" %>
+
+<div id="calendar">
+  <div id="date">
+    <div id="middle">
+      <div id="left-year"><%= link_to "<", :year => (@date.prev_year).strftime("%Y-%m-%d") %></div>
+      <div id="left-month"><%= link_to "<", :month => (@date.prev_month).strftime("%Y-%m-%d") %></div>
+      <%=h @date.strftime("%b %Y") %>
+      <div id="right-month"><%= link_to ">", :month => (@date.next_month).strftime("%Y-%m-%d") %></div>
+      <div id="right-year"><%= link_to ">", :year => (@date.next_year).strftime("%Y-%m-%d") %></div>
+    </div>
+  </div>
+  <%= calendar_for @entries, :year => @date.year, :month => @date.month do |calendar| %>
+    <%= calendar.head('Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.') %>
+    <% calendar.day(:day_method => :created_at) do |date, entries| %>
+        <%= date.day %>
+        <ul>
+        <% for entry in entries %>
+            <li><%= link_to h(entry.title), entry_show_path(entry.permalink) %></li>
+        <% end %>
+        </ul>
+    <% end %>
+  <% end %>
+</div>
+
+<%= javascript_include_tag "blog" %>

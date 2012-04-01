@@ -1,0 +1,93 @@
+<%= stylesheet_link_tag "show" %>
+
+<div class="entry" id="top">
+  <div class="left">
+    <% if @prev %>
+      <%= link_to '<div id="prev"></div>'.html_safe, entry_show_path(@prev.permalink) %>
+    <% else %>
+      <div id="prev"></div>
+    <% end %>
+
+  </div>
+
+  <div class="content">
+    <div class="title">
+        <h2>
+          <%= @entry.title %>
+          <% if logged_in? %>
+            <%= link_to "Edit", entry_edit_path(@entry.permalink) %>
+          <% end %>
+        </h2>
+        <div id="help">
+          <div id="help-popup">
+            <b>Please use Chrome 17+, IE 9.0+ or Firefox 4.0+</b>
+            <p>Top right corner for meta info.</p>
+            <p>Bottom right corner for goting back and top.</p>
+            <p>Left and right arrows for prev and next article.</p>
+          </div>
+        </div>
+        <div id="info">
+          <div id="info-popup">
+            <p>Author: <%= @entry.user.username %></p>
+            <p>Published at: <%= @entry.created_at.strftime("%F %T %Z") %></p>
+            <p>Updated at: <%= @entry.updated_at.strftime("%F %T %Z") %></p>
+          </div>
+        </div>
+        <div id="search">
+        </div>
+
+        <div id="search-popup">
+          <%= form_tag entry_search_path do %>
+            <%= text_field_tag :keyword, nil, :placeholder => "Keyword" %>
+            <%= submit_tag :Go %>
+          <% end %>
+        </div>
+    </div>
+
+    <div class="body">
+        <%= markdown(@entry.body) %>
+        <div id="gotop"></div>
+        <%= link_to '<div id="goback"></div>'.html_safe, blog_path %>
+    </div>
+  </div>
+
+  <div class="right">
+    <% if @next %>
+        <%= link_to '<div id="next"></div>'.html_safe, entry_show_path(@next.permalink) %>
+    <% else %>
+        <div id="next"></div>
+    <% end %>
+  </div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'lastomato'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+<%= javascript_include_tag "entry_show" %>
+
+<% unless @prev %>
+  <script type="text/javascript">
+    window["prev"].remove();
+
+    $("div#prev").css('cursor', 'auto');
+  </script>
+<% end %>
+
+<% unless @next %>
+  <script type="text/javascript">
+    window["next"].remove();
+
+    $("div#next").css('cursor', 'auto');
+  </script>
+<% end %>

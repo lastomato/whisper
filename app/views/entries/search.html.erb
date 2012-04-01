@@ -1,0 +1,11 @@
+<%= stylesheet_link_tag "search" %>
+
+<div id="results">
+  <% if @entries.blank? %>
+    <p>No results!</p>
+  <% else %>
+    <% @entries.each do |entry| %>
+      <p><%= link_to "#{entry.title}", entry_show_path(entry.permalink) %></p>
+    <% end %>
+  <% end %>
+</div>

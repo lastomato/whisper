@@ -1,0 +1,54 @@
+@mixin round-corner {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+$length: 36%;
+
+#login {
+  width: $length;
+  margin: 15% auto 10% auto;
+  text-align: center;
+
+  form input[type=text], input[type=password] {
+    @include round-corner;
+    width: $length;
+    height: 30px;
+    border:1px solid #bbbbbb;
+
+    margin: 5px auto;
+
+    line-height: 25px;
+    font-size: 18px;
+  }
+
+  form input[type=submit] {
+    @include round-corner;
+    width: $length;
+    background:#f6f6f6;
+    color:#454545;
+    border:1px solid #bbbbbb;
+    cursor:pointer;
+    display: block;
+    font-size:14px;
+    line-height:18px;
+    padding:6px 15px;
+    text-align:center;
+    vertical-align:middle;
+    *color:#bbbbbb;
+
+    margin: 10px auto 0 auto;
+  }
+}
+
+@import url(http://fonts.googleapis.com/css?family=Allura);
+
+#footer {
+  width: $length;
+  text-align: center;
+
+  span {
+    font-family: 'Allura', cursive;
+  }
+}

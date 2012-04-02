@@ -15,8 +15,8 @@ see www.jiefan.me
   
   User.create!(:username => "...", :password => "..." , :password_confirmation => "...")
   
-=> http://your_heroku_app_url
-=> http://your_heroku_app_url/blog
-=> http://your_heroku_app_url/login
+  http://your_heroku_app_url
+  http://your_heroku_app_url/blog
+  http://your_heroku_app_url/login
 
 Notice: Please change the personal information accordingly.

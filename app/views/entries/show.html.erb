@@ -15,7 +15,10 @@
         <h2>
           <%= @entry.title %>
           <% if logged_in? %>
-            <%= link_to "Edit", entry_edit_path(@entry.permalink) %>
+            <span>
+              <%= link_to "Edit", entry_edit_path(@entry.permalink) %>
+              <%= link_to "Destroy", entry_destroy_path(@entry.permalink), :confirm => "Sure?" %>
+            </span>
           <% end %>
         </h2>
         <div id="help">

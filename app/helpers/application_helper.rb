@@ -7,7 +7,7 @@ module ApplicationHelper
     }
 
     content.gsub!(/\<pre\>\<code class=\"(.+?)\"\>(.+?)\<\/code\><\/pre\>/m) do
-      CodeRay.scan($2, $1).div(defaults)
+      CodeRay.scan($2, $1).div(defaults).html_safe
     end
   end
 

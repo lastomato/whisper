@@ -4,7 +4,6 @@
   .CodeRay {
     background-color: #cecece;
     border: 1px solid #cecece;
-    font-family: 'Courier New', 'Terminal', monospace;
     color: #E6E0DB;
     padding: 3px 5px;
     overflow: auto;
@@ -33,9 +32,10 @@
 
   .CodeRay .debug { color:white ! important; background:blue ! important; }
 
+
   .CodeRay .annotation { color:#f08 }
-  .CodeRay .attribute-value { color:#700 }
-  .CodeRay .aw { color:#C00 }
+  .CodeRay .attribute_value { color:#700 }
+  .CodeRay .attribute_value_fat { color:#C00 }
   .CodeRay .binary { color:#509; font-weight:bold }
   .CodeRay .comment  { color:#998; font-style: italic;}
 

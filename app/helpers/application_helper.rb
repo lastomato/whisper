@@ -34,7 +34,7 @@ module ApplicationHelper
           '"'
         when "&#39;"
           "'"
-        when "&#39;"
+        when "&amp;"
           "&"
         when "&lt;"
           "<"

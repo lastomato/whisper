@@ -1,0 +1,36 @@
+@import url(http://fonts.googleapis.com/css?family=Allura);
+@import url(http://fonts.googleapis.com/css?family=Pinyon+Script);
+
+body {
+  background-color: lighten(#ffe7eb, 1%);
+}
+
+div#time {
+  margin: 15% auto;
+  width: 38%;
+
+  div#year, div#month, div#day, div#hour, div#minute, div#second {
+    display: inline-block;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 64px;
+
+    /*background-color: #F5C9D6;*/
+  }
+
+  div#month, div#day, div#hour, div#minute, div#second {
+    margin-left: 8px;
+  }
+
+  div#year, div#month, div#day, div#hour, div#minute {
+    margin-right: 8px;
+  }
+}
+
+#footer {
+  width: 100%;
+  text-align: center;
+
+  span {
+    font-family: 'Allura', cursive;
+  }
+}

@@ -4,6 +4,8 @@ Whisper::Application.routes.draw do
   match "/blog" => "entries#index"
   match "/blog/feed" => "entries#feed", :as => :feed
 
+  match "/6th" => "home#six", :as => :six
+
   match "/article/:permalink" => "entries#show", :as => :entry_show
   match "/article/edit/:permalink" => "entries#edit", :as => :entry_edit
   match "/entry/search" => "entries#search", :as => :entry_search

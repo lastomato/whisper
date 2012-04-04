@@ -6,8 +6,9 @@ module ApplicationHelper
       :tab_width => 2
     }
 
-    content.gsub!(/\<pre\>\<code class=\"(.+?)\"\>(.+?)\<\/code\><\/pre\>/m) do
-      CodeRay.scan($2, $1).div(defaults).html_safe
+    content.gsub!(/\<pre\>\<code class=\"(.+?)\"\>(.+?)\<\/code\>\<\/pre\>/m) do
+      d = $2
+      CodeRay.scan(unescape(d), $1).div(defaults)
     end
   end
 
@@ -24,5 +25,22 @@ module ApplicationHelper
 
     renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
     coderay(renderer.render(text)).html_safe
+  end
+
+  def unescape(content)
+    content.gsub!(/(&quot;|&#39;|&amp;|&lt;|&gt;)/) do
+      case $1
+        when "&quot;"
+          '"'
+        when "&#39;"
+          "'"
+        when "&#39;"
+          "&"
+        when "&lt;"
+          "<"
+        when "&gt;"
+          ">"
+      end
+    end
   end
 end

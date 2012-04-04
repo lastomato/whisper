@@ -50,8 +50,8 @@ list2.forEach(function(element, index, array){
 
   window[element].hover(function(e){
     $("div#" + element + "-popup").show()
-      .css('top', e.pageY - scrollY)
-      .css('left', e.pageX -scrollX + xFix);
+      .css('top', e.pageY - window.scrollY)
+      .css('left', e.pageX - window.scrollX + xFix);
   }, function(){
     $("div#" + element + "-popup").hide();
     })

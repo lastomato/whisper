@@ -2,7 +2,7 @@ Whisper::Application.routes.draw do
   root :to => "home#index"
 
   match "/blog" => "entries#index"
-  match "/blog/feed" => "entries#feed", :as => :feed
+  match "/blog/feed" => "entries#feed", :as => :feed, :defaults => { :format => "atom" }
 
   match "/6th" => "home#six", :as => :six
 

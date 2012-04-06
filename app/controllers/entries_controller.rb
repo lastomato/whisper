@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_filter :require_login, :except => [:show, :search, :index]
+  before_filter :require_login, :except => [:show, :search, :index, :feed]
 
   def index
     @entries = Entry.all

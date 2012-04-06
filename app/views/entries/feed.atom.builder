@@ -5,7 +5,7 @@ atom_feed do |feed|
   @entries.each do |entry|
     feed.entry(entry, :url => entry_show_path(entry.permalink)) do |e|
       e.title(entry.title)
-      e.content(entry.body, :type => 'html')
+      e.content(markdown(entry.body), :type => 'html')
 
       e.author do |author|
         author.name(entry.user.username)

@@ -6,7 +6,7 @@ module ApplicationHelper
       :tab_width => 2
     }
 
-    content.gsub!(/\<pre\>\<code class=\"(.+?)\"\>(.+?)\<\/code\>\<\/pre\>/m) do
+    content.gsub(/\<pre\>\<code class=\"(.+?)\"\>(.+?)\<\/code\>\<\/pre\>/m) do
       d = $2
       CodeRay.scan(unescape(d), $1).div(defaults)
     end
@@ -27,8 +27,9 @@ module ApplicationHelper
     coderay(renderer.render(text)).html_safe
   end
 
-  def unescape(content)
-    content.gsub!(/(&quot;|&#39;|&amp;|&lt;|&gt;)/) do
+  def unescape(content) # :nodoc:
+    # use gsub in case nil is returned
+    content.gsub(/(&quot;|&#39;|&amp;|&lt;|&gt;)/) do
       case $1
         when "&quot;"
           '"'
